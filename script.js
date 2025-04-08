@@ -3,6 +3,11 @@ const textInput = document.getElementById('textInput');
 const checkButton = document.getElementById('checkButton');
 const result = document.getElementById('result');
 
+// Debug: Log if elements are found
+console.log('Input element:', textInput);
+console.log('Button element:', checkButton);
+console.log('Result element:', result);
+
 // Function to check if a string is a palindrome
 function isPalindrome(str) {
     // Remove non-alphanumeric characters and convert to lowercase
@@ -14,6 +19,7 @@ function isPalindrome(str) {
 // Add click event listener to the check button
 checkButton.addEventListener('click', () => {
     const inputText = textInput.value.trim();
+    console.log('Input text:', inputText);
     
     if (inputText === '') {
         result.textContent = 'Please enter some text';
@@ -21,7 +27,10 @@ checkButton.addEventListener('click', () => {
         return;
     }
 
-    if (isPalindrome(inputText)) {
+    const isPal = isPalindrome(inputText);
+    console.log('Is palindrome:', isPal);
+
+    if (isPal) {
         result.textContent = `"${inputText}" is a palindrome!`;
         result.style.color = 'green';
     } else {
@@ -33,6 +42,10 @@ checkButton.addEventListener('click', () => {
 // Add event listener for Enter key
 textInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
+        console.log('Enter key pressed');
         checkButton.click();
     }
 });
+
+// Debug: Log when script is loaded
+console.log('Script loaded successfully');
